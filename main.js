@@ -22,5 +22,6 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             </div>
        `);
         cart.push(product);
+        console.log(cart);
     });
 }); 
