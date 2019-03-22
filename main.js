@@ -21,5 +21,6 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
                <h3 class="class__item__price">${product.price}</h3>
             </div>
        `);
+        cart.push(product);
     });
 }); 
