@@ -37,7 +37,12 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             cartItemsDOM.forEach((cartItemDOM) => {
                 if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
                     cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => {
-                        console.log(cartItemDOM);
+                        cart.forEach(cartItem => {
+                            if (cartItem.name === product.name) {
+                                cartItem.quantity = cartItem.quantity + 1;
+                                cartItemDOM.querySelector('.cart__item__quantity').innerText = cartItem.quantity;
+                            }
+                        })
                     });
                 }
                 
