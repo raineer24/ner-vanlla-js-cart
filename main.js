@@ -49,6 +49,9 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
 
                 cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').addEventListener('click', () => {
                     cart.forEach(cartItem => {
+                        if(cartItem.quantity > 1) {
+
+                        }
                         if (cartItem.name === product.name) {
                             cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
                         }
