@@ -53,7 +53,8 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
                             if (cartItem.quantity > 1) {
                                 cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
                             } else {
-                                
+                                cartItemDOM.remove();
+                                cart = cart.filter(cartItem => cartItem.name !== product.name);
                             }
 
                         }
