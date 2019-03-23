@@ -14,17 +14,20 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             price: productDOM.querySelector('.product__price').innerText,
         };
 
-        console.log(cart.filter(cartItem => (cartItem.name === product.name)).length);
-
-        cartDOM.insertAdjacentHTML('beforeend',
-            `
+        const isIncart = (cart.filter(cartItem => (cartItem.name === product.name)).length > 0);
+        if (isIncart === false) {
+            cartDOM.insertAdjacentHTML('beforeend',
+                `
             <div class="cart__item">
                <img class="cart__item__image" src="${product.image}" alt="${product.name}">
                <h3 class="class__item__name">${product.name}</h3>
                <h3 class="class__item__price">${product.price}</h3>
             </div>
        `);
-        cart.push(product);
-        addToCartButtonDOM.innerText = 'In Cart';
+            cart.push(product);
+            addToCartButtonDOM.innerText = 'In Cart';
+        }
+
+
     });
 });
