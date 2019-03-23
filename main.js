@@ -14,7 +14,7 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             price: productDOM.querySelector('.product__price').innerText,
         };
 
-        console.log(cart.filter(cartItem => (cartItem.name === product.name)));
+        console.log(cart.filter(cartItem => (cartItem.name === product.name)).length);
 
         cartDOM.insertAdjacentHTML('beforeend',
             `
