@@ -22,8 +22,12 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
                 `
             <div class="cart__item">
                <img class="cart__item__image" src="${product.image}" alt="${product.name}">
-               <h3 class="class__item__name">${product.name}</h3>
-               <h3 class="class__item__price">${product.price}</h3>
+               <h3 class="cart__item__name">${product.name}</h3>
+               <h3 class="cart__item__price">${product.price}</h3>
+               <h3 class="cart__item__quantity">${product.quantity}</h3>
+               <button class="btn btn--primary btn--small" data-action="DECREASE__ITEM">&minus;</button>
+               <button class="btn btn--primary btn--small" data-action="INCREASE__ITEM">&plus;</button>
+               <button class="btn btn--danger btn--small" data-action="REMOVE__ITEM">&times;</button>
             </div>
        `);
             cart.push(product);
@@ -31,5 +35,5 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
         }
 
 
-    });
+    }); 
 });
