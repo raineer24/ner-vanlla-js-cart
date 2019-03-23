@@ -35,7 +35,12 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
 
             const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
             cartItemsDOM.forEach((cartItemDOM) => {
-                console.log(cartItemDOM);
+                if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
+                    cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => {
+                        console.log(cartItemDOM);
+                    });
+                }
+                
             });
         }
 
