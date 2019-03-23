@@ -12,6 +12,7 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             image: productDOM.querySelector('.product__image').getAttribute('src'),
             name: productDOM.querySelector('.product__name').innerText,
             price: productDOM.querySelector('.product__price').innerText,
+            quantity: 1,
         };
 
         const isIncart = (cart.filter(cartItem => (cartItem.name === product.name)).length > 0);
