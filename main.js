@@ -15,7 +15,8 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
         };
 
         const isIncart = (cart.filter(cartItem => (cartItem.name === product.name)).length > 0);
-        if (isIncart === false) {
+        
+        if (!isIncart) {
             cartDOM.insertAdjacentHTML('beforeend',
                 `
             <div class="cart__item">
