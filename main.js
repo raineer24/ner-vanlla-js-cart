@@ -32,6 +32,11 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
        `);
             cart.push(product);
             addToCartButtonDOM.innerText = 'In Cart';
+
+            const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
+            cartItemsDOM.forEach((cartItemDOM) => {
+                console.log(cartItemDOM);
+            });
         }
 
 
