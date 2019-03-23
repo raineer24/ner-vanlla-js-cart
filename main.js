@@ -7,12 +7,15 @@ const cartDOM = document.querySelector('.cart');
 const addToCartButtonsDOM = document.querySelectorAll('[data-action="ADD_TO_CART"]');
 addToCartButtonsDOM.forEach(addToCartButtonDOM => {
     addToCartButtonDOM.addEventListener('click', () => {
-       const productDOM = addToCartButtonDOM.parentNode;
+        const productDOM = addToCartButtonDOM.parentNode;
         const product = {
             image: productDOM.querySelector('.product__image').getAttribute('src'),
             name: productDOM.querySelector('.product__name').innerText,
             price: productDOM.querySelector('.product__price').innerText,
         };
+
+        console.log(cart.filter(cartItem => (cartItem.name === product.name)));
+
         cartDOM.insertAdjacentHTML('beforeend',
             `
             <div class="cart__item">
@@ -22,6 +25,6 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             </div>
        `);
         cart.push(product);
-        console.log(cart);
+        addToCartButtonDOM.innerText = 'In Cart';
     });
-}); 
+});
