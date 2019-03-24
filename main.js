@@ -62,6 +62,10 @@ addToCartButtonDOM.addEventListener('click', () => {
                     addToCartButtonDOM.disabled = false;
                 }
 
+                if ( cartItem.quantity === 1) {
+                    cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').classList.add('btn--danger');
+                }
+
             }
         });
     });
@@ -78,6 +82,8 @@ addToCartButtonDOM.addEventListener('click', () => {
 
 
             }
+
+            
         });
     });
 
