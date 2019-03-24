@@ -1,15 +1,28 @@
 'use strict';
 
-let cart = [];
-
-if (JSON.parse(localStorage.getItem('cart')) !== null) {
-    cart = JSON.parse(localStorage.getItem('cart'));
-}
-
+let cart = (JSON.parse(localStorage.getItem('cart')) || []);
 const cartDOM = document.querySelector('.cart');
 const addToCartButtonsDOM = document.querySelectorAll('[data-action="ADD_TO_CART"]');
 
-console.log(cart);
+if ( cart.length > 0) {
+    cart.forEach(cartItem => {
+        const product = cartItem;
+        cartDOM.insertAdjacentHTML('beforeend',
+            `
+        <div class="cart__item">
+            <img class="cart__item__image" src="${product.image}" alt="${product.name}">
+            <h3 class="cart__item__name">${product.name}</h3>
+            <h3 class="cart__item__price">${product.price}</h3>
+            <h3 class="cart__item__quantity">${product.quantity}</h3>
+            <button class="btn btn--primary btn--small btn--danger" data-action="DECREASE__ITEM">&minus;</button>
+            <button class="btn btn--primary btn--small" data-action="INCREASE__ITEM">&plus;</button>
+            <button class="btn btn--danger btn--small" data-action="REMOVE__ITEM">&times;</button>
+        </div>
+    `);
+    });
+}
+
+
 
 addToCartButtonsDOM.forEach(addToCartButtonDOM => {
 addToCartButtonDOM.addEventListener('click', () => {
