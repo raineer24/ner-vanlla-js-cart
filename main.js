@@ -7,19 +7,19 @@ const cartDOM = document.querySelector('.cart');
 const addToCartButtonsDOM = document.querySelectorAll('[data-action="ADD_TO_CART"]');
 addToCartButtonsDOM.forEach(addToCartButtonDOM => {
     addToCartButtonDOM.addEventListener('click', () => {
-        const productDOM = addToCartButtonDOM.parentNode;
-        const product = {
-            image: productDOM.querySelector('.product__image').getAttribute('src'),
-            name: productDOM.querySelector('.product__name').innerText,
-            price: productDOM.querySelector('.product__price').innerText,
-            quantity: 1,
-        };
+            const productDOM = addToCartButtonDOM.parentNode;
+            const product = {
+                image: productDOM.querySelector('.product__image').getAttribute('src'),
+                name: productDOM.querySelector('.product__name').innerText,
+                price: productDOM.querySelector('.product__price').innerText,
+                quantity: 1,
+            };
 
-        const isIncart = (cart.filter(cartItem => (cartItem.name === product.name)).length > 0);
+            const isIncart = (cart.filter(cartItem => (cartItem.name === product.name)).length > 0);
 
-        if (!isIncart) {
-            cartDOM.insertAdjacentHTML('beforeend',
-                `
+            if (!isIncart) {
+                cartDOM.insertAdjacentHTML('beforeend',
+                    `
             <div class="cart__item">
                <img class="cart__item__image" src="${product.image}" alt="${product.name}">
                <h3 class="cart__item__name">${product.name}</h3>
@@ -30,12 +30,12 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
                <button class="btn btn--danger btn--small" data-action="REMOVE__ITEM">&times;</button>
             </div>
        `);
-            cart.push(product);
-            addToCartButtonDOM.innerText = 'In Cart';
-            addToCartButtonDOM.disabled = true;
+        cart.push(product);
+        addToCartButtonDOM.innerText = 'In Cart';
+        addToCartButtonDOM.disabled = true;
 
-            const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
-            cartItemsDOM.forEach((cartItemDOM) => {
+        const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
+        cartItemsDOM.forEach((cartItemDOM) => {
                 if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
 
                     cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => {
@@ -55,7 +55,7 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
                                 cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
                             } else {
                                 cartItemDOM.classList.add('cart__item--removed');
-                                setTimeout(() =>  cartItemDOM.remove(), 300);
+                                setTimeout(() => cartItemDOM.remove(), 300);
                                 cart = cart.filter(cartItem => cartItem.name !== product.name);
                                 addToCartButtonDOM.innerText = 'Add To Cart';
                             }
@@ -64,25 +64,22 @@ addToCartButtonsDOM.forEach(addToCartButtonDOM => {
                     });
                 });
 
-                cartItemDOM.querySelector('[data-action="REMOVE__ITEM"]').addEventListener('click', () => {
+            cartItemDOM.querySelector('[data-action="REMOVE__ITEM"]').addEventListener('click', () => {
                     cart.forEach(cartItem => {
-                        if (cartItem.name === product.name) {
-                            if (cartItem.quantity > 1) {
-                                cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
-                            } else {
+                            if (cartItem.name === product.name) {
                                 cartItemDOM.classList.add('cart__item--removed');
-                                setTimeout(() =>  cartItemDOM.remove(), 300);
+                                setTimeout(() => cartItemDOM.remove(), 300);
                                 cart = cart.filter(cartItem => cartItem.name !== product.name);
                                 addToCartButtonDOM.innerText = 'Add To Cart';
                             }
 
                         }
                     });
-                });
-
             });
-        }
-
 
     });
+}
+
+
+});
 });
