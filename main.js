@@ -4,6 +4,8 @@ let cart = (JSON.parse(localStorage.getItem('cart')) || []);
 const cartDOM = document.querySelector('.cart');
 const addToCartButtonsDOM = document.querySelectorAll('[data-action="ADD_TO_CART"]');
 
+
+//creating new cart item in the dom
 if ( cart.length > 0) {
     cart.forEach(cartItem => {
         const product = cartItem;
@@ -19,6 +21,10 @@ if ( cart.length > 0) {
             <button class="btn btn--danger btn--small" data-action="REMOVE__ITEM">&times;</button>
         </div>
     `);
+        addToCartButtonsDOM.forEach(addToCartButtonDOM => {
+            
+        }); 
+
     });
 }
 
