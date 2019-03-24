@@ -27,45 +27,9 @@ if ( cart.length > 0) {
             if (productDOM.querySelector('.product__name').innerText === product.name) {
                 addToCartButtonDOM.innerText = 'In Cart';
                 addToCartButtonDOM.disabled = true;
-            }
-        }); 
-
-    });
-}
 
 
-
-addToCartButtonsDOM.forEach(addToCartButtonDOM => {
-addToCartButtonDOM.addEventListener('click', () => {
-    const productDOM = addToCartButtonDOM.parentNode;
-    const product = {
-        image: productDOM.querySelector('.product__image').getAttribute('src'),
-        name: productDOM.querySelector('.product__name').innerText,
-        price: productDOM.querySelector('.product__price').innerText,
-        quantity: 1,
-    };
-
-    const isIncart = (cart.filter(cartItem => (cartItem.name === product.name)).length > 0);
-
-    if (!isIncart) {
-        cartDOM.insertAdjacentHTML('beforeend',
-            `
-        <div class="cart__item">
-            <img class="cart__item__image" src="${product.image}" alt="${product.name}">
-            <h3 class="cart__item__name">${product.name}</h3>
-            <h3 class="cart__item__price">${product.price}</h3>
-            <h3 class="cart__item__quantity">${product.quantity}</h3>
-            <button class="btn btn--primary btn--small btn--danger" data-action="DECREASE__ITEM">&minus;</button>
-            <button class="btn btn--primary btn--small" data-action="INCREASE__ITEM">&plus;</button>
-            <button class="btn btn--danger btn--small" data-action="REMOVE__ITEM">&times;</button>
-        </div>
-    `);
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        addToCartButtonDOM.innerText = 'In Cart';
-        addToCartButtonDOM.disabled = true;
-
-        const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
+                const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
         cartItemsDOM.forEach((cartItemDOM) => {
             if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
 
@@ -123,6 +87,45 @@ addToCartButtonDOM.addEventListener('click', () => {
     });
 
         });
+            }
+        }); 
+
+    });
+}
+
+
+
+addToCartButtonsDOM.forEach(addToCartButtonDOM => {
+addToCartButtonDOM.addEventListener('click', () => {
+    const productDOM = addToCartButtonDOM.parentNode;
+    const product = {
+        image: productDOM.querySelector('.product__image').getAttribute('src'),
+        name: productDOM.querySelector('.product__name').innerText,
+        price: productDOM.querySelector('.product__price').innerText,
+        quantity: 1,
+    };
+
+    const isIncart = (cart.filter(cartItem => (cartItem.name === product.name)).length > 0);
+
+    if (!isIncart) {
+        cartDOM.insertAdjacentHTML('beforeend',
+            `
+        <div class="cart__item">
+            <img class="cart__item__image" src="${product.image}" alt="${product.name}">
+            <h3 class="cart__item__name">${product.name}</h3>
+            <h3 class="cart__item__price">${product.price}</h3>
+            <h3 class="cart__item__quantity">${product.quantity}</h3>
+            <button class="btn btn--primary btn--small btn--danger" data-action="DECREASE__ITEM">&minus;</button>
+            <button class="btn btn--primary btn--small" data-action="INCREASE__ITEM">&plus;</button>
+            <button class="btn btn--danger btn--small" data-action="REMOVE__ITEM">&times;</button>
+        </div>
+    `);
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        addToCartButtonDOM.innerText = 'In Cart';
+        addToCartButtonDOM.disabled = true;
+
+        
     }
 
 
