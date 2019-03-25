@@ -126,5 +126,17 @@ function addCartFooter() {
                 <button class="btn btn--primary" data-action="CHECKOUT">Pay</button>
             </div>
         `);
-    }
+    };
+    document.querySelector('[data-action="CLEAR-CART"]').addEventListener('click', () => clearCart());
+    document.querySelector('[data-action="CHECKOUT"]').addEventListener('click', () => checkout());
+}
+
+//CLEARING THE EVENT
+
+function clearCart() {
+
+}
+
+function checkout) {
+    
 }
