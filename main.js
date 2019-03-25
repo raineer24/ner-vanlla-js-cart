@@ -56,14 +56,7 @@ function insertItemToDOM(product) {
         </div>
     `);
 
-    if (document.querySelector('.cart-footer') === null) {
-        cartDOM.insertAdjacentHTML('afterend', `
-            <div class="cart-footer">
-                <button class="btn btn--danger" data-action="CLEAR_CART">Clear Cart</button>
-                <button class="btn btn--primary" data-action="CHECKOUT">Pay</button>
-            </div>
-        `);
-    }
+  addCartFooter()
 }
 
 
@@ -123,3 +116,15 @@ function removeItem(product, cartItemDOM, addToCartButtonDOM ) {
         document.querySelector('.cart-footer').remove();
     }
  }
+
+
+function addCartFooter() {
+    if (document.querySelector('.cart-footer') === null) {
+        cartDOM.insertAdjacentHTML('afterend', `
+            <div class="cart-footer">
+                <button class="btn btn--danger" data-action="CLEAR_CART">Clear Cart</button>
+                <button class="btn btn--primary" data-action="CHECKOUT">Pay</button>
+            </div>
+        `);
+    }
+}
