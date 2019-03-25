@@ -62,9 +62,7 @@ function handleActionButtons(addToCartButtonDOM, product) {
      const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
      cartItemsDOM.forEach((cartItemDOM) => {
          if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
-             cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => {
-                function increaseItem(product)
-             });
+             cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => increaseItem(product));
          }
 
  cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').addEventListener('click', () => {
