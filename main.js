@@ -160,7 +160,7 @@ function checkout() {
 function countCartTotal() {
     let cartTotal = 0;
     cart.forEach(cartItem => {
-        cartTotal = cartTotal + (cartItem.quantity * cartItem.price);
+        cartTotal += cartItem.quantity * cartItem.price;
     });
 
     console.log(cartTotal);
