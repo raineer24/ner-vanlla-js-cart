@@ -62,15 +62,8 @@ function handleActionButtons(addToCartButtonDOM, product) {
      const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
      cartItemsDOM.forEach((cartItemDOM) => {
          if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
-
              cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => {
-                 cart.forEach(cartItem => {
-                     if (cartItem.name === product.name) {
-                         cartItemDOM.querySelector('.cart__item__quantity').innerText = ++cartItem.quantity;
-                         cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').classList.remove('btn--danger');
-                         localStorage.setItem('cart', JSON.stringify(cart));
-                     }
-                 })
+                
              });
          }
 
@@ -109,4 +102,9 @@ function handleActionButtons(addToCartButtonDOM, product) {
          });
     });
    });
+} 
+
+//Increase function() 
+function increaseItem() {
+    
 }
