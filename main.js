@@ -63,13 +63,9 @@ function handleActionButtons(addToCartButtonDOM, product) {
      cartItemsDOM.forEach((cartItemDOM) => {
          if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
              cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => increaseItem(product));
+             cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').addEventListener('click', () => decreaseItem(product, addToCartButtonDOM));
+             cartItemDOM.querySelector('[data-action="REMOVE__ITEM"]').addEventListener('click', () => removeItem());
          }
-
-    cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').addEventListener('click', () => decreaseItem(product, addToCartButtonDOM));
-
- cartItemDOM.querySelector('[data-action="REMOVE__ITEM"]').addEventListener('click', () => {
-     
-    });
    });
 } 
 
@@ -108,15 +104,11 @@ function decreaseItem(product, addToCartButtonDOM) {
 
 //removeItem function() 
 function removeItem(product, addToCartButtonDOM) {
-    cart.forEach(cartItem => {
-        if (cartItem.name === product.name) {
-            cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
-            cartItemDOM.classList.add('cart__item--removed');
-            setTimeout(() => cartItemDOM.remove(), 250);
-            cart = cart.filter(cartItem => cartItem.name !== product.name);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            addToCartButtonDOM.innerText = 'Add To Cart';
-            addToCartButtonDOM.disabled = false;
-        }
-        });
-}
+    cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
+    cartItemDOM.classList.add('cart__item--removed');
+    setTimeout(() => cartItemDOM.remove(), 250);
+    cart = cart.filter(cartItem => cartItem.name !== product.name);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    addToCartButtonDOM.innerText = 'Add To Cart';
+    addToCartButtonDOM.disabled = false;
+ }
