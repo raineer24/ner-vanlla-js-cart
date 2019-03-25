@@ -63,7 +63,7 @@ function handleActionButtons(addToCartButtonDOM, product) {
      cartItemsDOM.forEach((cartItemDOM) => {
          if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
              cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => {
-                
+                function increaseItem(product)
              });
          }
 
