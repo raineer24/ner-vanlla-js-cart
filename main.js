@@ -4,26 +4,21 @@ let cart = (JSON.parse(localStorage.getItem('cart')) || []);
 const cartDOM = document.querySelector('.cart');
 const addToCartButtonsDOM = document.querySelectorAll('[data-action="ADD_TO_CART"]');
 
-
 //creating new cart item in the dom
 if ( cart.length > 0) {
     cart.forEach(cartItem => {
         const product = cartItem;
         insertItemToDOM(product);
 
-
         addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             const productDOM = addToCartButtonDOM.parentNode;
-              
-            if (productDOM.querySelector('.product__name').innerText === product.name) {
+               if (productDOM.querySelector('.product__name').innerText === product.name) {
                 handleActionButtons(addToCartButtonDOM, product);
               }
         }); 
 
     });
 }
-
-
 
 addToCartButtonsDOM.forEach(addToCartButtonDOM => {
 addToCartButtonDOM.addEventListener('click', () => {
@@ -43,7 +38,6 @@ addToCartButtonDOM.addEventListener('click', () => {
         localStorage.setItem('cart', JSON.stringify(cart));
         handleActionButtons(addToCartButtonDOM, product);
    }
-
     });
 });
 
@@ -78,7 +72,6 @@ function handleActionButtons(addToCartButtonDOM, product) {
                      }
                  })
              });
-
          }
 
  cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').addEventListener('click', () => {
@@ -95,11 +88,9 @@ function handleActionButtons(addToCartButtonDOM, product) {
                  addToCartButtonDOM.innerText = 'Add To Cart';
                  addToCartButtonDOM.disabled = false;
              }
-
              if ( cartItem.quantity === 1) {
                  cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').classList.add('btn--danger');
              }
-
          }
      });
  });
