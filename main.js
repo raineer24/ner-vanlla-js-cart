@@ -159,12 +159,15 @@ function checkout() {
         <input type="hidden" name="business" value="delaritaraineer81@gmail.com">
         `;
 
-        // <input type="hidden" name="item_name_1" value="Item Name 1">
-        // <input type="hidden" name="amount_1" value="1.00">
-        // <input type="hidden" name="shipping_1" value="1.75">
-        // <input type="hidden" name="item_name_2" value="Item Name 2">
-        // <input type="hidden" name="amount_2" value="2.00">
-        // <input type="hidden" name="shipping_2" value="2.50">
+        cart.forEach((cartItem, index) => {
+            ++index;
+            paypalFormHTML += `
+            <input type="hidden" name="item_name_1" value="Item Name 1">
+            <input type="hidden" name="amount_1" value="1.00">
+            <input type="hidden" name="quantity_1" value="1.00">
+          `;
+        });
+         
 
         paypalFormHTML += `
             <input type="submit" value="PayPal">
