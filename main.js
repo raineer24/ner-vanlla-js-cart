@@ -118,4 +118,8 @@ function removeItem(product, cartItemDOM, addToCartButtonDOM ) {
     localStorage.setItem('cart', JSON.stringify(cart));
     addToCartButtonDOM.innerText = 'Add To Cart';
     addToCartButtonDOM.disabled = false;
+
+    if (cart.length < 1 ) {
+        document.querySelector('.cart-footer').remove();
+    }
  }
