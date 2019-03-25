@@ -172,8 +172,10 @@ function checkout() {
         paypalFormHTML += `
             <input type="submit" value="PayPal">
             </form>
+            <div class="overlay"></div>
     `;
     document.querySelector('body').insertAdjacentHTML('beforeend', paypalFormHTML);
+    //document.getElementById('paypal-form').submit();
     
 }
 function countCartTotal() {
