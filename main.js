@@ -41,6 +41,8 @@ addToCartButtonDOM.addEventListener('click', () => {
     });
 });
 
+
+
 function insertItemToDOM(product) {
     cartDOM.insertAdjacentHTML('beforeend',         `
         <div class="cart__item">
@@ -54,13 +56,17 @@ function insertItemToDOM(product) {
         </div>
     `);
 
-    cartDOM.insertAdjacentHTML('afterend', `
-        <div class="cart-footer">
-            <button class="btn btn--danger" data-action="CLEAR_CART">Clear Cart</button>
-            <button class="btn btn--primary" data-action="CHECKOUT">Pay</button>
-        </div>
-    `);
+    if (document.querySelector('.cart-footer') === null) {
+        cartDOM.insertAdjacentHTML('afterend', `
+            <div class="cart-footer">
+                <button class="btn btn--danger" data-action="CLEAR_CART">Clear Cart</button>
+                <button class="btn btn--primary" data-action="CHECKOUT">Pay</button>
+            </div>
+        `);
+    }
 }
+
+
 
 function handleActionButtons(addToCartButtonDOM, product) {
     addToCartButtonDOM.innerText = 'In Cart';
