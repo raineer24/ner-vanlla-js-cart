@@ -53,6 +53,10 @@ function insertItemToDOM(product) {
             <button class="btn btn--danger btn--small" data-action="REMOVE__ITEM">&times;</button>
         </div>
     `);
+
+    cartDOM.insertAdjacentHTML('afterend', `
+
+    `);
 }
 
 function handleActionButtons(addToCartButtonDOM, product) {
