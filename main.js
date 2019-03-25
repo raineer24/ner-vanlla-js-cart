@@ -105,6 +105,12 @@ function handleActionButtons(addToCartButtonDOM, product) {
 } 
 
 //Increase function() 
-function increaseItem() {
-    
+function increaseItem(product) {
+    cart.forEach(cartItem => {
+        if (cartItem.name === product.name) {
+            cartItemDOM.querySelector('.cart__item__quantity').innerText = ++cartItem.quantity;
+            cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').classList.remove('btn--danger');
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    })
 }
