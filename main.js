@@ -12,18 +12,12 @@ if ( cart.length > 0) {
         insertItemToDOM(product);
 
 
-        
         addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             const productDOM = addToCartButtonDOM.parentNode;
               
             if (productDOM.querySelector('.product__name').innerText === product.name) {
                 handleActionButtons(addToCartButtonDOM, product);
-                addToCartButtonDOM.innerText = 'In Cart';
-                addToCartButtonDOM.disabled = true;
-
-
-         
-            }
+              }
         }); 
 
     });
@@ -48,17 +42,13 @@ addToCartButtonDOM.addEventListener('click', () => {
         cart.push(product);
         localStorage.setItem('cart', JSON.stringify(cart));
         handleActionButtons(addToCartButtonDOM, product);
-
-        
-    }
-
+   }
 
     });
 });
 
 function insertItemToDOM(product) {
-    cartDOM.insertAdjacentHTML('beforeend',
-            `
+    cartDOM.insertAdjacentHTML('beforeend',         `
         <div class="cart__item">
             <img class="cart__item__image" src="${product.image}" alt="${product.name}">
             <h3 class="cart__item__name">${product.name}</h3>
@@ -124,13 +114,8 @@ function handleActionButtons(addToCartButtonDOM, product) {
              localStorage.setItem('cart', JSON.stringify(cart));
              addToCartButtonDOM.innerText = 'Add To Cart';
              addToCartButtonDOM.disabled = false;
-
-
          }
-
-         
-     });
- });
-
-     });
+         });
+    });
+   });
 }
