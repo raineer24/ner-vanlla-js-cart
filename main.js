@@ -162,9 +162,9 @@ function checkout() {
         cart.forEach((cartItem, index) => {
             ++index;
             paypalFormHTML += `
-            <input type="hidden" name="item_name_1" value="Item Name 1">
-            <input type="hidden" name="amount_1" value="1.00">
-            <input type="hidden" name="quantity_1" value="1.00">
+            <input type="hidden" name="item_name_${index}" value="${cartItem.name}">
+            <input type="hidden" name="amount_${index}" value="${cartItem.name}">
+            <input type="hidden" name="quantity_${index}" value="${cartItem.name}">
           `;
         });
          
@@ -173,6 +173,7 @@ function checkout() {
             <input type="submit" value="PayPal">
             </form>
     `;
+    document.querySelector('body').insertAdjacentHTML('beforeend', paypalFormHTML);
     
 }
 function countCartTotal() {
