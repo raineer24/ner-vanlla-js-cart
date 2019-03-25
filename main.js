@@ -56,7 +56,7 @@ function insertItemToDOM(product) {
         </div>
     `);
 
-  addCartFooter()
+  addCartFooter();
 }
 
 
@@ -126,17 +126,29 @@ function addCartFooter() {
                 <button class="btn btn--primary" data-action="CHECKOUT">Pay</button>
             </div>
         `);
-    };
-    document.querySelector('[data-action="CLEAR-CART"]').addEventListener('click', () => clearCart());
+        document.querySelector('[data-action="CLEAR_CART"]').addEventListener('click', () => clearCart());
     document.querySelector('[data-action="CHECKOUT"]').addEventListener('click', () => checkout());
+    };
+    
 }
 
 //CLEARING THE EVENT
 
 function clearCart() {
+    cartDOM.querySelectorAll('.cart__item').forEach(cartItemDOM => {
+        cartItemDOM.classList.add('cart__item--removed');
+        setTimeout(() => cartItemDOM.remove(), 250);
+    });
+    cart = [];
+    localStorage.removeItem('cart');
+    document.querySelector('.cart-footer').remove();
+    addToCartButtonsDOM.forEach(addToCartButtonDOM => {
+    addToCartButtonDOM.innerText = 'Add To Cart';
+    addToCartButtonDOM.disabled = false;
+    });
 
 }
 
-function checkout) {
+function checkout() {
     
 }
