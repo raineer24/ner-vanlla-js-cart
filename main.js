@@ -9,6 +9,7 @@ if ( cart.length > 0) {
     cart.forEach(cartItem => {
         const product = cartItem;
         insertItemToDOM(product);
+        countCartTotal();
 
         addToCartButtonsDOM.forEach(addToCartButtonDOM => {
             const productDOM = addToCartButtonDOM.parentNode;
@@ -36,6 +37,7 @@ addToCartButtonDOM.addEventListener('click', () => {
         insertItemToDOM(product);
         cart.push(product);
         localStorage.setItem('cart', JSON.stringify(cart));
+        countCartTotal();
         handleActionButtons(addToCartButtonDOM, product);
    }
     });
@@ -82,6 +84,7 @@ function increaseItem(product, cartItemDOM) {
             cartItemDOM.querySelector('.cart__item__quantity').innerText = ++cartItem.quantity;
             cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').classList.remove('btn--danger');
             localStorage.setItem('cart', JSON.stringify(cart));
+            countCartTotal();
         }
     })
 }
@@ -93,6 +96,7 @@ function decreaseItem(product, cartItemDOM, addToCartButtonDOM ) {
             if (cartItem.quantity > 1) {
                 cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
                 localStorage.setItem('cart', JSON.stringify(cart));
+                countCartTotal();
             } else {
                 removeItem(product, cartItemDOM, addToCartButtonDOM);
             }
@@ -109,6 +113,7 @@ function removeItem(product, cartItemDOM, addToCartButtonDOM ) {
     setTimeout(() => cartItemDOM.remove(), 250);
     cart = cart.filter(cartItem => cartItem.name !== product.name);
     localStorage.setItem('cart', JSON.stringify(cart));
+    countCartTotal();
     addToCartButtonDOM.innerText = 'Add To Cart';
     addToCartButtonDOM.disabled = false;
 
@@ -153,5 +158,10 @@ function checkout() {
     
 }
 function countCartTotal() {
-    
+    let cartTotal = 0;
+    cart.forEach(cartItem => {
+        cartTotal = cartTotal + (cartItem.quantity * cartItem.price);
+    });
+
+    console.log(cartTotal);
 }
