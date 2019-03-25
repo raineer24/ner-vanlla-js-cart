@@ -161,6 +161,6 @@ function countCartTotal() {
     let cartTotal = 0;
     cart.forEach(cartItem => {
         cartTotal += cartItem.quantity * cartItem.price;
-        document.querySelector('[data-action="CHECKOUT"]').innerText = 'Pay $' + cartTotal;
+        document.querySelector('[data-action="CHECKOUT"]').innerText = `Pay $${cartTotal}`;
     });
 }
