@@ -153,7 +153,7 @@ function clearCart() {
 
 function checkout() {
     let paypalFormHTML = `
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_cart">
         <input type="hidden" name="upload" value="1">
         <input type="hidden" name="business" value="delaritaraineer81@gmail.com">
@@ -175,7 +175,7 @@ function checkout() {
             <div class="overlay"></div>
     `;
     document.querySelector('body').insertAdjacentHTML('beforeend', paypalFormHTML);
-    //document.getElementById('paypal-form').submit();
+    document.getElementById('paypal-form').submit();
     
 }
 function countCartTotal() {
