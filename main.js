@@ -152,3 +152,6 @@ function clearCart() {
 function checkout() {
     
 }
+function countCartTotal() {
+    
+}
