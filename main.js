@@ -88,7 +88,7 @@ function decreaseItem(product, addToCartButtonDOM) {
                 cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
                 localStorage.setItem('cart', JSON.stringify(cart));
             } else {
-                
+                removeItem(product, addToCartButtonDOM);
             }
             if ( cartItem.quantity === 1) {
                 cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').classList.add('btn--danger');
