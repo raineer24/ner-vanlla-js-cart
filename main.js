@@ -55,7 +55,10 @@ function insertItemToDOM(product) {
     `);
 
     cartDOM.insertAdjacentHTML('afterend', `
-
+        <div class="cart-footer">
+            <button class="btn btn--danger" data-action="CLEAR_CART">Clear Cart</button>
+            <button class="btn btn--primary" data-action="CHECKOUT">Pay</button>
+        </div>
     `);
 }
 
@@ -85,14 +88,14 @@ function increaseItem(product, cartItemDOM) {
 }
 
 //decreaseItem function() 
-function decreaseItem(product, addToCartButtonDOM, cartItemDOM) {
+function decreaseItem(product, cartItemDOM, addToCartButtonDOM ) {
     cart.forEach(cartItem => {
         if (cartItem.name === product.name) {
             if (cartItem.quantity > 1) {
                 cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
                 localStorage.setItem('cart', JSON.stringify(cart));
             } else {
-                removeItem(product, addToCartButtonDOM);
+                removeItem(product, cartItemDOM, addToCartButtonDOM);
             }
             if ( cartItem.quantity === 1) {
                 cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').classList.add('btn--danger');
@@ -102,8 +105,7 @@ function decreaseItem(product, addToCartButtonDOM, cartItemDOM) {
 }
 
 //removeItem function() 
-function removeItem(product, addToCartButtonDOM, cartItemDOM) {
-    cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
+function removeItem(product, cartItemDOM, addToCartButtonDOM ) {
     cartItemDOM.classList.add('cart__item--removed');
     setTimeout(() => cartItemDOM.remove(), 250);
     cart = cart.filter(cartItem => cartItem.name !== product.name);
