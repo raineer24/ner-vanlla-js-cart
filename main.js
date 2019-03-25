@@ -62,15 +62,15 @@ function handleActionButtons(addToCartButtonDOM, product) {
      const cartItemsDOM = cartDOM.querySelectorAll('.cart__item');
      cartItemsDOM.forEach((cartItemDOM) => {
          if (cartItemDOM.querySelector('.cart__item__name').innerText === product.name) {
-             cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => increaseItem(product));
-             cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').addEventListener('click', () => decreaseItem(product, addToCartButtonDOM));
-             cartItemDOM.querySelector('[data-action="REMOVE__ITEM"]').addEventListener('click', () => removeItem(product, addToCartButtonDOM));
+             cartItemDOM.querySelector('[data-action="INCREASE__ITEM"]').addEventListener('click', () => increaseItem(product, cartItemDOM));
+             cartItemDOM.querySelector('[data-action="DECREASE__ITEM"]').addEventListener('click', () => decreaseItem(product, cartItemDOM, addToCartButtonDOM));
+             cartItemDOM.querySelector('[data-action="REMOVE__ITEM"]').addEventListener('click', () => removeItem(product, cartItemDOM, addToCartButtonDOM));
          }
    });
 } 
 
 //Increase function() 
-function increaseItem(product) {
+function increaseItem(product, cartItemDOM) {
     cart.forEach(cartItem => {
         if (cartItem.name === product.name) {
             cartItemDOM.querySelector('.cart__item__quantity').innerText = ++cartItem.quantity;
@@ -81,7 +81,7 @@ function increaseItem(product) {
 }
 
 //decreaseItem function() 
-function decreaseItem(product, addToCartButtonDOM) {
+function decreaseItem(product, addToCartButtonDOM, cartItemDOM) {
     cart.forEach(cartItem => {
         if (cartItem.name === product.name) {
             if (cartItem.quantity > 1) {
@@ -98,7 +98,7 @@ function decreaseItem(product, addToCartButtonDOM) {
 }
 
 //removeItem function() 
-function removeItem(product, addToCartButtonDOM) {
+function removeItem(product, addToCartButtonDOM, cartItemDOM) {
     cartItemDOM.querySelector('.cart__item__quantity').innerText = --cartItem.quantity;
     cartItemDOM.classList.add('cart__item--removed');
     setTimeout(() => cartItemDOM.remove(), 250);
